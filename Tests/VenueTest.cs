@@ -35,6 +35,20 @@ namespace BandTracker
       Assert.Equal(firstVenue, secondVenue);
     }
 
+    [Fact]
+    public void Save_DoesSaveToDatabase_True()
+    {
+      //Arrange
+      Venue testVenue = new Venue("Widespread Panic");
+      testVenue.Save();
+      //Act
+      List<Venue> result = Venue.GetAll();
+      List<Venue> testList = new List<Venue>{testVenue};
+      //Assert
+      Assert.Equal(testList, result);
+    }
+
+
     //
     public void Dispose()
     {
