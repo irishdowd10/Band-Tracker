@@ -2,15 +2,22 @@
   Layout ="shared/_Layout.cshtml";
 }
 
-<h2>Venues:</h2>
+<h3>Venues:</h3>
+<ul>
 @if (Model.Count != 0)
 {
-  <ul>
+
     @foreach (var venue in Model)
     {
       <li><a href="/venues/@venue.GetId()">@venue.GetName() | <a href="/venue/edit/@venue.GetId()">Edit</a> | <a href="/venue/delete/@venue.GetId()">Delete</a></li>
     }
-  </ul>
+  }
+  else
+{
+<h4> No Venues listed, Please add one. </h4>
 }
+
+  </ul>
+
 <h4><a href="/venues/new">Add a new Venue</a></h4>
 <h4><a href="/">Return home</a></h4>

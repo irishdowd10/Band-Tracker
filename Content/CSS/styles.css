@@ -5,4 +5,13 @@ body {
 .jumbotron {
   text-align: center;
   font-weight: bolder;
+  color: red;
+}
+
+h4 {
+  color: red;
+}
+
+h3 {
+  color: purple;
 }
