@@ -4,6 +4,7 @@ using System;
 
 namespace BandTracker
 {
+
   public class Venue
   {
     private int _id;
