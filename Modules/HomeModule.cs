@@ -28,29 +28,29 @@ namespace BandTracker
         newVenue.Save();
         return View["success.cshtml"];
       };
-    //   Get["/bands/new"] = _ => {
-    //     List<Venue> AllVenues = Venue.GetAll();
-    //     return View["bands_form.cshtml", AllVenues];
-    //   };
-    //   Post["/bands/new"] = _ => {
-    //     Band newBand = new Band(Request.Form["band-name"]);
-    //     newBand.Save();
-    //     return View["success.cshtml"];
-    //   };
-    //   Post["/bands/delete"] = _ => {
-    //     Band.DeleteAll();
-    //     return View["cleared.cshtml"];
-    //   };
-    // Get["venues/{id}"] = parameters => {
-    //   Dictionary<string, object> model = new Dictionary<string, object>();
-    //   Venue SelectedVenue = Venue.Find(parameters.id);
-    //   List<Band> VenueBands = SelectedVenue.GetBands();
-    //   List<Band> AllBands = Band.GetAll();
-    //   model.Add("venue", SelectedVenue);
-    //   model.Add("venueBands", VenueBands);
-    //   model.Add("allBands", AllBands);
-    //   return View["venue.cshtml", model];
-    //  };
+      Get["/bands/new"] = _ => {
+        List<Venue> AllVenues = Venue.GetAll();
+        return View["bands_form.cshtml", AllVenues];
+      };
+      Post["/bands/new"] = _ => {
+        Band newBand = new Band(Request.Form["band-name"]);
+        newBand.Save();
+        return View["success.cshtml"];
+      };
+      // Post["/bands/delete"] = _ => {
+      //   Band.DeleteAll();
+      //   return View["cleared.cshtml"];
+      // };
+    Get["venues/{id}"] = parameters => {
+      Dictionary<string, object> model = new Dictionary<string, object>();
+      Venue SelectedVenue = Venue.Find(parameters.id);
+      List<Band> VenueBands = SelectedVenue.GetBands();
+      List<Band> AllBands = Band.GetAll();
+      model.Add("venue", SelectedVenue);
+      model.Add("venueBands", VenueBands);
+      model.Add("allBands", AllBands);
+      return View["venue.cshtml", model];
+     };
     // Get["bands/{id}"] = parameters => {
     //    Dictionary<string, object> model = new Dictionary<string, object>();
     //    Band SelectedBand = Band.Find(parameters.id);

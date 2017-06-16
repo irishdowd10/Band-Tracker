@@ -1,16 +1,16 @@
 @{
   Layout ="shared/_Layout.cshtml";
 }
-<h2>BandTrackers:</h2>
+<h2>Bands:</h2>
 @if (Model.Count != 0)
 {
-  <Ol>
+  <Ul>
     @foreach (var band in Model)
     {
-      <li><a href='/bands/@band.GetId()'><p>Id: @band.GetId()</p><p>Name: @band.GetName()</p><p>Enrollment Date: @band.GetEnrollmentDate()</p></a> | <a href="/band/edit/@band.GetId()">Edit</a> | <a href="/band/delete/@band.GetId()">Delete</a></li>
+      <li><a href='/bands/@band.GetId()'>@band.GetName() | <a href="/band/edit/@band.GetId()">Edit</a> | <a href="/band/delete/@band.GetId()">Delete</a></li>
     }
 
-  </Ol>
+  </Ul>
 }
 <h4><a href="/bands/new">Add new band</a></h4>
 <h4><a href="/">Return home</a></h4>
