@@ -48,6 +48,19 @@ namespace BandTracker
       Assert.Equal(testList, result);
     }
 
+    [Fact]
+    public void Find_FindsVenueInDatabase_True()
+    {
+      Venue testVenue = new Venue("Widepsread Panic");
+      testVenue.Save();
+
+      Venue foundVenue = Venue.Find(testVenue.GetId());
+
+      Assert.Equal(testVenue, foundVenue);
+    }
+
+
+
 
     //
     public void Dispose()
