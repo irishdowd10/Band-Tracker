@@ -121,7 +121,19 @@ namespace BandTracker
       Assert.Equal(test, result);
     }
 
+    [Fact]
+    public void Edit_EditsesVenueInDatabase()
+    {
+      //Arrange
+      Venue newVenue = new Venue("Red Rock");
+      newVenue.Save();
+      newVenue.Edit("Red Socks");
 
+     //Act
+    //  Venue newerVenue = new Venue("Red Socks");
+
+     Assert.Equal(newVenue.GetName(), "Red Socks");
+    }
 
 
     //

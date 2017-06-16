@@ -101,7 +101,6 @@ namespace BandTracker
 
       while(rdr.Read())
       {
-
         this._id = rdr.GetInt32(0);
       }
       if(rdr != null)
@@ -213,23 +212,60 @@ namespace BandTracker
 
 
       //Delete Venue
-      public void Delete()
+    public void Delete()
+    {
+      SqlConnection conn = DB.Connection();
+      conn.Open();
+
+      SqlCommand cmd = new SqlCommand("DELETE FROM venues WHERE id = @VenueId; DELETE FROM venues_bands WHERE venue_id = @VenueId;", conn);
+      SqlParameter venueIdParameter = new SqlParameter();
+      venueIdParameter.ParameterName = "@VenueId";
+      venueIdParameter.Value = this.GetId();
+
+      cmd.Parameters.Add(venueIdParameter);
+      cmd.ExecuteNonQuery();
+
+      if (conn != null)
       {
-        SqlConnection conn = DB.Connection();
-        conn.Open();
+        conn.Close();
+      }
+    }
 
-        SqlCommand cmd = new SqlCommand("DELETE FROM venues WHERE id = @VenueId; DELETE FROM venues_bands WHERE venue_id = @VenueId;", conn);
-        SqlParameter venueIdParameter = new SqlParameter();
-        venueIdParameter.ParameterName = "@VenueId";
-        venueIdParameter.Value = this.GetId();
+    //Updates a Venue
+    public void Edit(string newName)
+     {
+       SqlConnection conn = DB.Connection();
+       conn.Open();
 
-        cmd.Parameters.Add(venueIdParameter);
-        cmd.ExecuteNonQuery();
+       SqlCommand cmd = new SqlCommand("UPDATE venues SET name = @NewName OUTPUT INSERTED.name WHERE id = @VenueId;", conn);
 
-        if (conn != null)
-        {
-          conn.Close();
-        }
+       SqlParameter newNameParameter = new SqlParameter();
+       newNameParameter.ParameterName = "@NewName";
+       newNameParameter.Value = newName;
+       cmd.Parameters.Add(newNameParameter);
+
+       SqlParameter venueIdParameter = new SqlParameter();
+       venueIdParameter.ParameterName = "@VenueId";
+       venueIdParameter.Value = this.GetId();
+       cmd.Parameters.Add(venueIdParameter);
+       SqlDataReader rdr = cmd.ExecuteReader();
+
+       while(rdr.Read())
+       {
+        //  this._id =rdr.GetInt32(0);
+         this._name = rdr.GetString(0);
+
+       }
+
+       if (rdr != null)
+       {
+         rdr.Close();
+       }
+
+       if (conn != null)
+       {
+         conn.Close();
+       }
       }
 
 

@@ -89,6 +89,7 @@ namespace BandTracker
 
       Venue firstVenue = new Venue("Red Rocks");
       Venue secondVenue = new Venue("Fox");
+
       firstVenue.Save();
       secondVenue.Save();
       //Act
@@ -119,6 +120,19 @@ namespace BandTracker
 
       //Assert
       Assert.Equal(test, result);
+    }
+
+    [Fact]
+    public void Edit_EditsesBandInDatabase()
+    {
+      //Arrange
+      Band newBand = new Band("Widespread Panic");
+      newBand.Save();
+
+      newBand.Edit("WSP");
+
+      //Act
+      Assert.Equal(newBand.GetName(), "WSP");
     }
 
 
