@@ -13,15 +13,15 @@ This program gives the user the opportunity to add venues to bands and bands to 
 |Program will return empty database for band. |" "| " "|
 |Program will create and return a band. |"Widespread Panic"| "Widespread Panic"|
 |Program will return all bands. | [List Bands Button] | "Names of all bands"|
-|Program will create a venue under band. |"Winterland"| "Grateful Dead"|
+|Program will create a venue under band. |"Fox"| "Widespread Panic"|
 |Program will delete band |"Phish"| " "|
 |Program will return edited band info. |"Widespread Panic"| "WSP"|
 |Program will return empty database for venue. |" "| " "|
 |Program will return all venues. | [List Venues Button] | "Names of all Venues"|
 |Program will create and return a venue. |"Red Rocks"| "Red Rocks"|
-|Program will create a band under venue. |"Grateful Dead"| "Winterland"|
+|Program will create a band under venue. |"Widespread Panic"| "Fox"|
 |Program will delete venue. |"Red Rocks"| " "|
-|Program will return edited venue info. |"Gorge"| "George in Gorge"|
+|Program will return edited venue info. |"Red Rocks"| "Red Socks"|
 
 
 ### Link
